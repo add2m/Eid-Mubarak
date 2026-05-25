@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عيد أضحى مبارك</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&family=Markazi+Text:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0f4d3e;
+            --secondary: #d4af37;
+            --accent: #b8964f;
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.25);
+            --text-light: #f5f5f5;
+            --text-dark: #1a1a1a;
+            --shadow: rgba(15, 77, 62, 0.3);
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, #0a3d2e 0%, #1a5f4e 50%, #0f3d2e 100%);
+            color: var(--text-light);
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .gradient-overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(184, 150, 79, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 50% 20%, rgba(15, 77, 62, 0.2) 0%, transparent 50%);
+            animation: gradientShift 15s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.1); }
+        }
+
+        .particle {
+            position: absolute;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.6) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .crescent-float {
+            position: absolute;
+            font-size: 60px;
+            opacity: 0.1;
+            animation: crescentDrift 25s linear infinite;
+        }
+
+        @keyframes crescentDrift {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.1;
+            }
+            90% {
+                opacity: 0.1;
+            }
+            100% {
+                transform: translate(200px, -100vh) rotate(180deg);
+                opacity: 0;
+            }
+        }
+
+        /* Main Container */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 3rem 0;
+            animation: fadeInDown 1.2s ease-out;
+        }
+
+        .main-icon {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.6));
+            animation: iconPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes iconPulse {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg); 
+                filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.6));
+            }
+            50% { 
+                transform: scale(1.1) rotate(5deg); 
+                filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.9));
+            }
+        }
+
+        h1 {
+            font-family: 'Markazi Text', serif;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            text-shadow: 
+                0 0 30px rgba(212, 175, 55, 0.5),
+                0 5px 15px rgba(0, 0, 0, 0.3);
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 3rem 2.5rem;
+            margin: 2rem 0;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            animation: slideUp 1s ease-out 0.3s both;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                var(--secondary), 
+                transparent);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.3; transform: translateX(-100%); }
+            50% { opacity: 1; transform: translateX(100%); }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(60px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .glass-card h2 {
+            font-family: 'Markazi Text', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--secondary);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .glass-card p {
+            font-size: clamp(1.15rem, 2.5vw, 1.4rem);
+            line-height: 2.2;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .highlight {
+            color: var(--secondary);
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+        }
+
+        .divider {
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+            margin: 2rem auto;
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        /* Wishes Grid */
+        .wishes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .wish-item {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            animation: fadeIn 0.8s ease-out both;
+        }
+
+        .wish-item:nth-child(1) { animation-delay: 0.6s; }
+        .wish-item:nth-child(2) { animation-delay: 0.8s; }
+        .wish-item:nth-child(3) { animation-delay: 1s; }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .wish-item:hover {
+            transform: translateY(-10px) scale(1.03);
+            border-color: rgba(212, 175, 55, 0.5);
+            box-shadow: 
+                0 15px 50px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3),
+                0 0 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .wish-icon {
+            font-size: 3rem;
+            margin-bottom: 1.2rem;
+            display: block;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
+        }
+
+        .wish-item h3 {
+            font-family: 'Markazi Text', serif;
+            font-size: 1.6rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .wish-item p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+        }
+
+        /* Contact Form */
+        .contact-section {
+            animation: fadeIn 0.8s ease-out 1.2s both;
+        }
+
+        .form-group {
+            margin-bottom: 1.8rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 0.7rem;
+            font-size: 1.1rem;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1.05rem;
+            color: var(--text-light);
+            transition: all 0.3s ease;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--secondary);
+            box-shadow: 
+                inset 0 2px 5px rgba(0, 0, 0, 0.2),
+                0 0 0 3px rgba(212, 175, 55, 0.2),
+                0 0 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: var(--text-dark);
+            border: none;
+            padding: 1.2rem 3.5rem;
+            border-radius: 50px;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            display: block;
+            margin: 0 auto;
+            box-shadow: 
+                0 8px 25px rgba(212, 175, 55, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 
+                0 12px 35px rgba(212, 175, 55, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4),
+                0 0 30px rgba(212, 175, 55, 0.5);
+        }
+
+        .submit-btn:active {
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        .success-message {
+            display: none;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.9), rgba(5, 150, 105, 0.9));
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 1.8rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 5px 20px rgba(16, 185, 129, 0.4);
+            animation: slideUp 0.5s ease-out;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        /* Secret Button */
+        .secret-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            box-shadow: 
+                0 8px 25px rgba(212, 175, 55, 0.5),
+                inset 0 2px 5px rgba(255, 255, 255, 0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            animation: secretPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes secretPulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 
+                    0 8px 25px rgba(212, 175, 55, 0.5),
+                    inset 0 2px 5px rgba(255, 255, 255, 0.3);
+            }
+            50% {
+                transform: scale(1.08);
+                box-shadow: 
+                    0 12px 35px rgba(212, 175, 55, 0.7),
+                    inset 0 2px 5px rgba(255, 255, 255, 0.4),
+                    0 0 30px rgba(212, 175, 55, 0.6);
+            }
+        }
+
+        .secret-btn:hover {
+            transform: scale(1.15) rotate(10deg);
+            box-shadow: 
+                0 15px 40px rgba(212, 175, 55, 0.8),
+                inset 0 2px 5px rgba(255, 255, 255, 0.5),
+                0 0 40px rgba(212, 175, 55, 0.7);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, 
+                rgba(15, 77, 62, 0.95), 
+                rgba(26, 95, 78, 0.95));
+            backdrop-filter: blur(30px);
+            border: 2px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 3.5rem 3rem;
+            max-width: 650px;
+            width: 100%;
+            position: relative;
+            box-shadow: 
+                0 25px 70px rgba(0, 0, 0, 0.6),
+                inset 0 2px 5px rgba(255, 255, 255, 0.1);
+            animation: modalSlide 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        @keyframes modalSlide {
+            from {
+                opacity: 0;
+                transform: translateY(80px) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            background: rgba(212, 175, 55, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .close-btn:hover {
+            background: rgba(212, 175, 55, 0.4);
+            transform: rotate(90deg) scale(1.1);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.5);
+        }
+
+        .modal-content h2 {
+            font-family: 'Markazi Text', serif;
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.95);
+            line-height: 2.2;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .heart {
+            font-size: 3.5rem;
+            text-align: center;
+            margin: 2rem 0;
+            filter: drop-shadow(0 0 15px rgba(255, 100, 100, 0.6));
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { 
+                transform: scale(1); 
+                filter: drop-shadow(0 0 15px rgba(255, 100, 100, 0.6));
+            }
+            25% { 
+                transform: scale(1.2); 
+                filter: drop-shadow(0 0 25px rgba(255, 100, 100, 0.9));
+            }
+            50% { 
+                transform: scale(1); 
+                filter: drop-shadow(0 0 15px rgba(255, 100, 100, 0.6));
+            }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 0 2rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+            animation: fadeIn 0.8s ease-out 1.5s both;
+        }
+
+        .hint {
+            color: var(--secondary);
+            font-weight: 600;
+            font-style: italic;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(15, 77, 62, 0.3);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem 1rem;
+            }
+
+            header {
+                padding: 2rem 0;
+            }
+
+            .glass-card {
+                padding: 2.5rem 1.8rem;
+                border-radius: 25px;
+            }
+
+            .modal-content {
+                padding: 3rem 2rem;
+            }
+
+            .wishes-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .secret-btn {
+                bottom: 20px;
+                left: 20px;
+                width: 55px;
+                height: 55px;
+                font-size: 1.6rem;
+            }
+
+            .main-icon {
+                font-size: 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg" id="animatedBg">
+        <div class="gradient-overlay"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="main-icon">☪️</div>
+            <h1>عيد أضحى مبارك</h1>
+            <p class="subtitle">تقبل الله منا ومنكم صالح الأعمال</p>
+        </header>
+
+        <!-- Main Message -->
+        <section class="glass-card">
+            <h2>بمناسبة عيد الأضحى المبارك</h2>
+            <p>
+                في هذه الأيام المباركة، أتمنى أن يملأ الله قلبك بـ<span class="highlight">السعادة</span>
+                والبهجة، وأن يحقق لك كل ما تتمناه في الحياة.
+            </p>
+            <p>
+                عسى أن يكون هذا العيد بداية جديدة مليئة بـ<span class="highlight">الخير</span>
+                والـ<span class="highlight">بركات</span> والـ<span class="highlight">نجاح</span> في جميع مجالات حياتك.
+            </p>
+            <div class="divider"></div>
+            <p>
+                تقبل الله منك الصالحات وأعاده عليك وعلى جميع المسلمين بالخير واليُمن والبركات.
+            </p>
+        </section>
+
+        <!-- Wishes Grid -->
+        <section class="wishes-grid">
+            <div class="wish-item">
+                <span class="wish-icon">✨</span>
+                <h3>السعادة والفرح</h3>
+                <p>أتمنى أن تكون أيامك مليئة بالبهجة والسرور والسعادة التي لا تنتهي</p>
+            </div>
+            <div class="wish-item">
+                <span class="wish-icon">🤲</span>
+                <h3>القبول والرضا</h3>
+                <p>تقبل الله منك العبادات وجعلك من عباده الصالحين المقبولين</p>
+            </div>
+            <div class="wish-item">
+                <span class="wish-icon">💚</span>
+                <h3>المحبة والسلام</h3>
+                <p>جعل الله حياتك مليئة بالمحبة والوئام مع الأهل والأحباب</p>
+            </div>
+        </section>
+
+        <!-- Contact Form -->
+        <section class="glass-card contact-section">
+            <h2>راسلني</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">يسعدني تلقي رسالتك وتهنئتك الجميلة</p>
+            <form id="contactForm" action="https://formspree.io/f/YOUR_UNIQUE_ID_HERE" method="POST">
+                <div class="form-group">
+                    <label for="name">الاسم</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">رسالتك</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn" id="submitBtn">إرسال</button>
+             </form>
+             <div class="success-message" id="successMessage">✓ شكراً! وصلتني رسالتك.</div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p><span class="hint">✨ في رساله مستخبيه حاول تلاقيها!!!✨</span></p>
+            <p style="margin-top: 1.5rem; opacity: 0.6;">كل عام وأنتم بخير | Eid Mubarak</p>
+        </footer>
+    </div>
+
+    <!-- Secret Button -->
+    <button class="secret-btn" id="secretBtn" aria-label="رسالة سرية">
+        💌
+    </button>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <button class="close-btn" id="closeBtn" aria-label="إغلاق">&times;</button>
+            <h2>رسالة من القلب</h2>
+            <div class="heart">❤️</div>
+            <p>
+                أعلم أن الأمور لم تكن سهلة بيننا مؤخراً، وأكره بشدة أننا نمر بهذه الفترة الصعبة.
+                أنت تعني لي الكثير حقاً، وصداقتنا شيء أعتز به وأقدره كثيراً.
+            </p>
+            <p>
+                أنا آسف من كل قلبي على أي شيء فعلته أو قلته أساء إليك أو جعل الأمور صعبة بيننا.
+                أنت أهم بالنسبة لي أكثر مما تتخيل، وأفتقد حقاً الطريقة التي كانت عليها الأمور بيننا.
+            </p>
+            <p>
+                الحياة قصيرة جداً لكي نسمح لسوء التفاهم أن يفرق بين الناس الذين يهتمون ببعضهم البعض.
+                آمل بصدق أن نتمكن من تجاوز هذا الأمر وإعادة بناء الصداقة الجميلة التي بيننا.
+            </p>
+            <p style="font-weight: 700; color: var(--secondary); margin-top: 2rem; font-size: 1.4rem;">
+                أنا آسف حقاً، وأتمنى أن يكون هذا العيد بداية جديدة لصداقتنا. 🌙
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Create animated background particles
+        function createParticles() {
+            const bg = document.getElementById('animatedBg');
+            const particleCount = 20;
+
+            // Create floating particles
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                const size = Math.random() * 4 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.animationDuration = `${Math.random() * 15 + 15}s`;
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                bg.appendChild(particle);
+            }
+
+            // Create twinkling stars
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.animationDelay = `${Math.random() * 3}s`;
+                bg.appendChild(star);
+            }
+
+            // Create floating crescents
+            for (let i = 0; i < 3; i++) {
+                const crescent = document.createElement('div');
+                crescent.className = 'crescent-float';
+                crescent.textContent = '☪';
+                crescent.style.left = `${Math.random() * 80 + 10}%`;
+                crescent.style.top = `${100 + Math.random() * 20}%`;
+                crescent.style.animationDuration = `${Math.random() * 10 + 20}s`;
+                crescent.style.animationDelay = `${Math.random() * 5}s`;
+                bg.appendChild(crescent);
+            }
+        }
+
+        // Initialize particles on load
+        createParticles();
+
+        // Modal functionality
+        const secretBtn = document.getElementById('secretBtn');
+        const modal = document.getElementById('modal');
+        const closeBtn = document.getElementById('closeBtn');
+
+        secretBtn.addEventListener('click', () => {
+            modal.classList.add('active');
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                modal.classList.remove('active');
+            }
+        });
+
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const successMessage = document.getElementById('successMessage');
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            submitBtn.textContent = 'جاري الإرسال...';
+            submitBtn.disabled = true;
+
+            const formData = new FormData(contactForm);
+            const response = await fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (response.ok) {
+                successMessage.classList.add('show');
+                contactForm.reset();
+                submitBtn.textContent = 'تم الإرسال';
+            } else {
+                alert('حدث خطأ، يرجى المحاولة مرة أخرى.');
+                submitBtn.textContent = 'إرسال';
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
